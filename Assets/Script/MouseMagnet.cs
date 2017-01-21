@@ -10,6 +10,8 @@ public class MouseMagnet : MonoBehaviour {
 
     public float magnetForce = 1.0f;
 
+    public bool useMouse = true;
+
     // Use this for initialization
     void Start () {
         EyeTracking.Initialize();
@@ -19,8 +21,9 @@ public class MouseMagnet : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        Vector3 watchingPos;
-        watchingPos = Input.mousePosition;
+        Vector3 watchingPos = new Vector3();
+        if(useMouse)
+            watchingPos = Input.mousePosition;
         GazePoint gp = EyeTracking.GetGazePoint();
         if(gp.IsValid)
             watchingPos = gp.Screen;
@@ -30,7 +33,7 @@ public class MouseMagnet : MonoBehaviour {
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            Debug.Log("Collision");
+            //Debug.Log("Collision");
             //transform.position = hit.point + new Vector3(0, GetComponent<Collider>().bounds.size.y / 2, 0);
             if (rb)
                 rb.AddForce(magnetForce * (hit.point - transform.position) );

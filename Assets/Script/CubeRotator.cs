@@ -9,6 +9,8 @@ public class CubeRotator : MonoBehaviour {
     public float speedAnimation = 0.02f;
 
 
+    //private Vector3 axis;
+    //private float rest;
 
     // Use this for initialization
     void Start () {
@@ -23,51 +25,65 @@ public class CubeRotator : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 animate = true;
-                rotationLeft += transform.rotation * new Vector3(-90, 0, 0);
+                //rotationLeft += transform.rotation * new Vector3(-90, 0, 0);
+                rotationLeft += new Vector3(90, 0, 0);
 
-                
-                //transform.Rotate(-90,0,0);
+                //axis = Vector3.right;
+                //rest = 90.0f;
             }
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
                 animate = true;
-                rotationLeft += transform.rotation * new Vector3(90, 0, 0);
+                //rotationLeft += transform.rotation * new Vector3(90, 0, 0);
+                rotationLeft +=  new Vector3(-90, 0, 0);
 
 
-                //transform.Rotate(90, 0, 0);
+                //axis = Vector3.right;
+                //rest = 90.0f;
             }
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 animate = true;
-                rotationLeft += transform.rotation * new Vector3(0, 0, -90);
+                //rotationLeft += transform.rotation * new Vector3(0, 0, -90);
+                rotationLeft += new Vector3(0, 0, -90);
 
 
-                //transform.Rotate(0, 0, -90);
+                //axis = Vector3.forward;
+                //rest = 90.0f;
             }
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 animate = true;
-                rotationLeft += transform.rotation * new Vector3(0, 0, 90);
+                //rotationLeft += transform.rotation * new Vector3(0, 0, 90);
+                rotationLeft +=  new Vector3(0, 0, 90);
 
-                //transform.Rotate(0, 0, 90);
+                //axis = Vector3.right;
+                //rest = 90.0f;
             }
         }
         if (animate)
         {
-
+            //if(rest < 1.0f)
             if (rotationLeft.magnitude < 1.0f)
             {
-                transform.Rotate(rotationLeft);
+                transform.Rotate(rotationLeft, Space.World);
                 animate = false;
                 rotationLeft = Vector2.zero;
 
+                //transform.Rotate(axis, rest);
+                //rest = 0.0f;
 
             }
             else
             {
                 Vector3 r = Vector3.Lerp(new Vector3(), rotationLeft, speedAnimation);
-                transform.Rotate(r);
+                transform.Rotate(r,Space.World);
                 rotationLeft -= r;
+
+                //float r = Mathf.Lerp(0.0f, rest, speedAnimation);
+                //float r = 1.0f;
+                //transform.Rotate(axis, rest);
+                //rest -= r;
 
 
             }

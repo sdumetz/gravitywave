@@ -6,6 +6,7 @@ public class EndCollider : MonoBehaviour {
 
     private bool ended = false;
     public Transform sphere;
+    public Transform cube;
 
     private Vector3 initPos;
 
@@ -20,19 +21,22 @@ public class EndCollider : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (ended)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (ended)
             {
                 ended = false;
                 FindObjectOfType<Camera>().transform.position = new Vector3(0, 0, 0);
-                sphere.position = initPos;
                 startTime = Time.realtimeSinceStartup;
             }
-
-
+            cube.rotation = new Quaternion();
+            sphere.position = initPos;
+            sphere.gameObject.SetActive(true);
         }
-        
+
+
+
+
     }
 
     void OnTriggerEnter(Collider coll)
@@ -43,6 +47,8 @@ public class EndCollider : MonoBehaviour {
             FindObjectOfType<TextMesh>().text = Mathf.Round(Time.realtimeSinceStartup - startTime).ToString();
             //print(Time.realtimeSinceStartup);
             ended = true;
+            
+            sphere.gameObject.SetActive(false);
         }
 
     }
