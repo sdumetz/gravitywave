@@ -26,7 +26,7 @@ public class EndCollider : MonoBehaviour {
             if (ended)
             {
                 ended = false;
-                FindObjectOfType<Camera>().transform.position = new Vector3(0, 0, 0);
+                FindObjectOfType<Camera>().transform.position -= new Vector3(5000, 0, 0);
                 startTime = Time.realtimeSinceStartup;
             }
             cube.rotation = new Quaternion();
@@ -43,7 +43,7 @@ public class EndCollider : MonoBehaviour {
     {
         if (!ended)
         {
-            FindObjectOfType<Camera>().transform.position = new Vector3(5000, 0, 0);
+            FindObjectOfType<Camera>().transform.position += new Vector3(5000, 0, 0);
             FindObjectOfType<TextMesh>().text = Mathf.Round(Time.realtimeSinceStartup - startTime).ToString();
             //print(Time.realtimeSinceStartup);
             ended = true;

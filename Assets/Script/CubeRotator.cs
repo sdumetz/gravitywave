@@ -22,7 +22,7 @@ public class CubeRotator : MonoBehaviour {
     void Update() {
         if (!animate)
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+            /*if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 animate = true;
                 //rotationLeft += transform.rotation * new Vector3(-90, 0, 0);
@@ -59,6 +59,27 @@ public class CubeRotator : MonoBehaviour {
 
                 //axis = Vector3.right;
                 //rest = 90.0f;
+            }*/
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                transform.Rotate(new Vector3(1, 0, 0), Space.World);
+            }
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                transform.Rotate(new Vector3(-1, 0, 0), Space.World);
+                
+            }
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                transform.Rotate(new Vector3(0, 0, -1), Space.World);
+
+
+                //axis = Vector3.forward;
+                //rest = 90.0f;
+            }
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                transform.Rotate(new Vector3(0, 0, 1), Space.World);
             }
         }
         if (animate)
