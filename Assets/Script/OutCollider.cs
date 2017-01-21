@@ -22,8 +22,8 @@ public class OutCollider : MonoBehaviour {
         {
             //float magnitude = Mathf.Sqrt(cube.rotation.w * cube.rotation.w + cube.rotation.x * cube.rotation.x + cube.rotation.y * cube.rotation.y + cube.rotation.z * cube.rotation.z);
             float magnitude = cube.rotation.eulerAngles.magnitude;
-            Debug.Log(magnitude);
-            if (magnitude < 1.0f)
+            //Debug.Log(magnitude);
+            if (magnitude < 5.0f)
             {
                 cube.rotation = new Quaternion();
                 animate = false;

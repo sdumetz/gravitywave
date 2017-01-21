@@ -8,9 +8,15 @@ public class MouseMagnet : MonoBehaviour {
 
    private  Rigidbody rb;
 
+    public float smoothing = 5;
+
+    public Renderer isTracking;
+
     public float magnetForce = 1.0f;
 
     public bool useMouse = true;
+
+    private Vector3 prevPos = new Vector3();
 
     // Use this for initialization
     void Start () {
@@ -22,21 +28,42 @@ public class MouseMagnet : MonoBehaviour {
     void Update()
     {
         Vector3 watchingPos = new Vector3();
-        if(useMouse)
+        if (useMouse)
             watchingPos = Input.mousePosition;
-        GazePoint gp = EyeTracking.GetGazePoint();
-        if(gp.IsValid)
-            watchingPos = gp.Screen;
-        //Debug.Log(watchingPos);
 
-        Ray ray = Camera.main.ScreenPointToRay(watchingPos);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
+        GazeTracking gazeTracking = EyeTracking.GetGazeTrackingStatus();
+        if (gazeTracking.IsTrackingEyeGaze)
         {
-            //Debug.Log("Collision");
-            //transform.position = hit.point + new Vector3(0, GetComponent<Collider>().bounds.size.y / 2, 0);
-            if (rb)
-                rb.AddForce(magnetForce * (hit.point - transform.position) );
+            isTracking.material.color = Color.green; //C#
+            GazePoint gp = EyeTracking.GetGazePoint();
+            if (gp.IsValid)
+                watchingPos = gp.Screen;
+        }
+        else
+            isTracking.material.color = Color.red; //C#
+
+
+        //Debug.Log(watchingPos);
+        if (watchingPos != Vector3.zero) { 
+            Ray ray = Camera.main.ScreenPointToRay(watchingPos);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
+            {
+                //Debug.Log("Collision");
+                //transform.position = hit.point + new Vector3(0, GetComponent<Collider>().bounds.size.y / 2, 0);
+                if (rb)
+                {
+                    Vector3 magPos = new Vector3();
+                    if (prevPos == Vector3.zero)
+                        magPos = hit.point;
+                    else
+                        magPos = (hit.point +smoothing * prevPos)/(smoothing+1);
+                    prevPos = magPos;
+                    rb.AddForce(magnetForce * (magPos - transform.position));
+                    transform.LookAt(magPos);
+
+                }
+            }
         }
     }
 
