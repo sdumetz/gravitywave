@@ -7,12 +7,30 @@ ModelImporter:
   fileIDToRecycleName:
     100000: default
     100002: //RootNode
+    100004: default_MeshPart0
+    100006: default_MeshPart1
+    100008: default_MeshPart2
     400000: default
     400002: //RootNode
+    400004: default_MeshPart0
+    400006: default_MeshPart1
+    400008: default_MeshPart2
     2300000: default
+    2300002: default_MeshPart0
+    2300004: default_MeshPart1
+    2300006: default_MeshPart2
     3300000: default
+    3300002: default_MeshPart0
+    3300004: default_MeshPart1
+    3300006: default_MeshPart2
     4300000: default
+    4300002: default_MeshPart0
+    4300004: default_MeshPart1
+    4300006: default_MeshPart2
     6400000: default
+    6400002: default_MeshPart0
+    6400004: default_MeshPart1
+    6400006: default_MeshPart2
   materials:
     importMaterials: 1
     materialName: 0
