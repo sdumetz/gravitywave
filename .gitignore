@@ -31,3 +31,6 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+#blender tmp files
+*.blend1
