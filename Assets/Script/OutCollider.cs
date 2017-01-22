@@ -24,7 +24,9 @@ public class OutCollider : MonoBehaviour {
             //float magnitude = cam.rotation.eulerAngles.magnitude;
             float magnitude = cam.localRotation.eulerAngles.magnitude;
             //Debug.Log(magnitude);
+#if UNITY_STANDALONE
             if (magnitude < 10.0f)
+#endif
             {
                 //cam.rotation = new Quaternion();
                 cam.localRotation = new Quaternion();
@@ -34,6 +36,8 @@ public class OutCollider : MonoBehaviour {
 
 
             }
+
+#if UNITY_STANDALONE
             else
             {
                 //Debug.Log("ndju");
@@ -45,7 +49,8 @@ public class OutCollider : MonoBehaviour {
 
 
             }
-
+            
+#endif
         }
 
     }

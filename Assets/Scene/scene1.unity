@@ -365,7 +365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a40b544b8c3553c40852ae7ad35a9343, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vrModeEnabled: 0
+  vrModeEnabled: 1
   distortionCorrectionEnabled: 1
   neckModelScale: 0
   autoUntiltHead: 1
@@ -465,6 +465,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 879206335}
+  - component: {fileID: 879206336}
   m_Layer: 0
   m_Name: CameraRotator
   m_TagString: Untagged
@@ -486,6 +487,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &879206336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 879206334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58a9e8fe7fd890241903d303ecd7f981, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &890309794
 Prefab:
   m_ObjectHideFlags: 0
@@ -928,6 +940,10 @@ Prefab:
     - target: {fileID: 400000, guid: f3a8c0a11ec142d45839e85c0592c10f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: f3a8c0a11ec142d45839e85c0592c10f, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f3a8c0a11ec142d45839e85c0592c10f, type: 3}
