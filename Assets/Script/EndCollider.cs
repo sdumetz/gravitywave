@@ -6,7 +6,10 @@ public class EndCollider : MonoBehaviour {
 
     private bool ended = false;
     public Transform sphere;
-    public Transform cube;
+    public Transform camera;
+
+    public GameObject reussite;
+    public GameObject echec;
 
     private Vector3 initPos;
 
@@ -28,8 +31,11 @@ public class EndCollider : MonoBehaviour {
                 ended = false;
                 FindObjectOfType<Camera>().transform.position -= new Vector3(5000, 0, 0);
                 startTime = Time.realtimeSinceStartup;
-            }
-            cube.rotation = new Quaternion();
+                reussite.SetActive(false);
+                echec.SetActive(false);
+            
+        }
+            camera.rotation = new Quaternion();
             sphere.position = initPos;
             sphere.gameObject.SetActive(true);
         }
@@ -49,6 +55,12 @@ public class EndCollider : MonoBehaviour {
             ended = true;
             
             sphere.gameObject.SetActive(false);
+
+
+            if (true)
+                reussite.SetActive(true);
+            else
+                echec.SetActive(true);
         }
 
     }

@@ -5,8 +5,7 @@ using UnityEngine;
 using Tobii.EyeTracking;
 
 public class EyeRotator : MonoBehaviour {
-
-    public Renderer isTracking;
+    
     private Vector3 prevPos = new Vector3();
     public float smoothing = 5;
 
@@ -17,12 +16,19 @@ public class EyeRotator : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        /*Vector3 watchingPos = new Vector3();
+        watchingPos = Input.mousePosition;
+        Vector3 rot = new Vector3(2.0f * (watchingPos.y - Screen.height / 2.0f) / Screen.height, 0.0f,  -2.0f * (watchingPos.x - Screen.width / 2.0f) / Screen.width);
+        Debug.Log(rot);
+        transform.Rotate(rot, Space.World);*/
+
+        
+
         Vector3 watchingPos = new Vector3();
 
         GazeTracking gazeTracking = EyeTracking.GetGazeTrackingStatus();
         if (gazeTracking.IsTrackingEyeGaze)
         {
-            isTracking.material.color = Color.green; //C#
             GazePoint gp = EyeTracking.GetGazePoint();
             if (gp.IsValid)
                 watchingPos = gp.Screen;
@@ -33,13 +39,16 @@ public class EyeRotator : MonoBehaviour {
             prevPos = watchingPos;
             //rb.AddForce(magnetForce * (magPos - transform.position));
             //transform.LookAt(magPos);
+            watchingPos *= 1.0f;
+            //watchingPos.x = Mathf.Pow(watchingPos.x, 3);
+            //watchingPos.y = Mathf.Pow(watchingPos.y, 3);
 
-            Vector3 rot = new Vector3((watchingPos.x - Screen.resolutions[0].width/2.0f) / Screen.resolutions[0].width, (watchingPos.x - Screen.resolutions[0].height / 2.0f) / Screen.resolutions[0].height, 0.0f);
 
-            
+            Vector3 rot = new Vector3( (watchingPos.y - Screen.height / 2.0f) / Screen.height, 0.0f, -1.0f * (watchingPos.x - Screen.width / 2.0f) / Screen.width);
+            //Debug.Log(rot);
+            transform.Rotate(rot, Space.World);
         }
-        else
-            isTracking.material.color = Color.red; //C#
+
 
 
 
