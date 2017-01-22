@@ -57,10 +57,13 @@ public class EndCollider : MonoBehaviour {
             sphere.gameObject.SetActive(false);
 
 
-            if (true)
+            if (FindObjectOfType<CheckPoint>().done)
                 reussite.SetActive(true);
             else
                 echec.SetActive(true);
+
+            FindObjectOfType<CheckPoint>().done = false;
+
         }
 
     }
