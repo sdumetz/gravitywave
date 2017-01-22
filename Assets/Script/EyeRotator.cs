@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+#if UNITY_STANDALONE
 using Tobii.EyeTracking;
+#endif
 
 public class EyeRotator : MonoBehaviour {
     
@@ -25,7 +26,7 @@ public class EyeRotator : MonoBehaviour {
         
 
         Vector3 watchingPos = new Vector3();
-
+#if UNITY_STANDALONE
         GazeTracking gazeTracking = EyeTracking.GetGazeTrackingStatus();
         if (gazeTracking.IsTrackingEyeGaze)
         {
@@ -48,7 +49,7 @@ public class EyeRotator : MonoBehaviour {
             //Debug.Log(rot);
             transform.Rotate(rot, Space.Self);
         }
-
+#endif
 
 
 
