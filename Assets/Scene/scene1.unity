@@ -764,7 +764,7 @@ Rigidbody:
   m_GameObject: {fileID: 1592209729}
   serializedVersion: 2
   m_Mass: 10
-  m_Drag: 0.1
+  m_Drag: 0.3
   m_AngularDrag: 0.1
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -1103,7 +1103,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
