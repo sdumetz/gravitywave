@@ -6,8 +6,8 @@ public class EndCollider : MonoBehaviour {
 
     private bool ended = false;
     public Transform sphere;
-    public Transform camera;
-
+    public Transform cam;
+    public TextMesh textM;
     public GameObject reussite;
     public GameObject echec;
 
@@ -37,7 +37,7 @@ public class EndCollider : MonoBehaviour {
                 echec.SetActive(false);
             
         }
-            camera.rotation = new Quaternion();
+            cam.rotation = new Quaternion();
             sphere.position = initPos;
             sphere.gameObject.SetActive(true);
         }
@@ -64,18 +64,20 @@ public class EndCollider : MonoBehaviour {
     {
         if (!ended)
         {
+            if (FindObjectOfType<CheckPoint>().done)
+                reussite.SetActive(true);
+            else
+                echec.SetActive(true);
+
             //FindObjectOfType<Camera>().transform.position += new Vector3(5000, 0, 0);
-            FindObjectOfType<TextMesh>().text = Mathf.Round(Time.realtimeSinceStartup - startTime).ToString() + "s";
+            textM.text = Mathf.Round(Time.realtimeSinceStartup - startTime).ToString() + "s";
             //print(Time.realtimeSinceStartup);
             ended = true;
             
             sphere.gameObject.SetActive(false);
 
 
-            if (FindObjectOfType<CheckPoint>().done)
-                reussite.SetActive(true);
-            else
-                echec.SetActive(true);
+
 
             FindObjectOfType<CheckPoint>().done = false;
 
