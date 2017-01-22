@@ -44,7 +44,7 @@ public class EyeRotator : MonoBehaviour {
             //watchingPos.y = Mathf.Pow(watchingPos.y, 3);
 
 
-            Vector3 rot = new Vector3( (watchingPos.y - Screen.height / 2.0f) / Screen.height, 0.0f, -1.0f * (watchingPos.x - Screen.width / 2.0f) / Screen.width);
+            Vector3 rot = new Vector3( -1.0f * (watchingPos.y - Screen.height / 2.0f) / Screen.height, 0.0f, 1.0f * (watchingPos.x - Screen.width / 2.0f) / Screen.width);
             //Debug.Log(rot);
             transform.Rotate(rot, Space.World);
         }
