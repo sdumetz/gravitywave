@@ -1,7 +1,7 @@
 ﻿//-----------------------------------------------------------------------
 // Copyright 2014 Tobii Technology AB. All rights reserved.
 //-----------------------------------------------------------------------
-
+#if (UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN) && !UNITY_ANDROID
 using Tobii.EyeX.Framework;
 
 namespace Tobii.EyeTracking
@@ -87,3 +87,4 @@ namespace Tobii.EyeTracking
         }
     }
 }
+#endif
