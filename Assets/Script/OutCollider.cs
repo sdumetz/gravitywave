@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OutCollider : MonoBehaviour {
     public Transform sphere;
-    public Transform cube;
+    public Transform cam;
 
     private Vector3 initPos;
     // Use this for initialization
@@ -21,11 +21,13 @@ public class OutCollider : MonoBehaviour {
         if (animate)
         {
             //float magnitude = Mathf.Sqrt(cube.rotation.w * cube.rotation.w + cube.rotation.x * cube.rotation.x + cube.rotation.y * cube.rotation.y + cube.rotation.z * cube.rotation.z);
-            float magnitude = cube.rotation.eulerAngles.magnitude;
+            //float magnitude = cam.rotation.eulerAngles.magnitude;
+            float magnitude = cam.localRotation.eulerAngles.magnitude;
             //Debug.Log(magnitude);
             if (magnitude < 10.0f)
             {
-                cube.rotation = new Quaternion();
+                //cam.rotation = new Quaternion();
+                cam.localRotation = new Quaternion();
                 animate = false;
                 sphere.gameObject.SetActive(true);
                 sphere.position = initPos;
@@ -35,8 +37,11 @@ public class OutCollider : MonoBehaviour {
             else
             {
                 //Debug.Log("ndju");
-                Quaternion r = Quaternion.Lerp(cube.rotation, Quaternion.identity, 0.05f);
-                cube.rotation = r;
+                //Quaternion r = Quaternion.Lerp(cam.rotation, Quaternion.identity, 0.05f);
+                //Quaternion r = Quaternion.Lerp(cam.rotation, new Quaternion(), 0.05f);
+                //cam.rotation = r;
+                Quaternion r = Quaternion.Lerp(cam.localRotation, Quaternion.identity, 0.05f);
+                cam.localRotation = r;
 
 
             }
