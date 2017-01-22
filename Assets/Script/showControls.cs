@@ -14,10 +14,10 @@ public class showControls : MonoBehaviour {
     void Start () {
         level.SetActive(false);
 #if UNITY_STANDALONE
-        GetComponent<Renderer>().materials[0] = materialStandalone;
+        GetComponent<Renderer>().material = materialStandalone;
 #endif
 #if UNITY_ANDROID
-        GetComponent<Renderer>().materials[0] = materialAndroid;
+        GetComponent<Renderer>().material = materialAndroid;
 #endif
     }
 

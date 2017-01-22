@@ -13,6 +13,8 @@ public class EndCollider : MonoBehaviour {
 
     private Vector3 initPos;
 
+    private float endTime = 0.0f;
+
     private float startTime;
 	// Use this for initialization
 	void Start () {
@@ -40,10 +42,23 @@ public class EndCollider : MonoBehaviour {
             sphere.gameObject.SetActive(true);
         }
 
+#if UNITY_ANDROID
+        if (ended)
+        {
+            if(Time.realtimeSinceStartup - endTime > 5.0f)
+            {
+                ended = false;
+                startTime = Time.realtimeSinceStartup;
+                reussite.SetActive(false);
+                echec.SetActive(false);
+            }
+        }
+#endif
 
 
 
-    }
+
+        }
 
     void OnTriggerEnter(Collider coll)
     {
@@ -63,6 +78,8 @@ public class EndCollider : MonoBehaviour {
                 echec.SetActive(true);
 
             FindObjectOfType<CheckPoint>().done = false;
+
+            endTime = Time.realtimeSinceStartup;
 
         }
 
