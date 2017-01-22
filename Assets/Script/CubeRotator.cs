@@ -56,6 +56,6 @@ public class CubeRotator : MonoBehaviour {
         }
         //transform.localRotation = Quaternion.Euler(eulers);
 
-        Physics.gravity = gravityFactor * transform.forward;
+        //Physics.gravity = gravityFactor * transform.forward;
     }
 }
