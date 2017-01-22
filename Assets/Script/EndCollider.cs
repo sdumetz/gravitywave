@@ -29,7 +29,7 @@ public class EndCollider : MonoBehaviour {
             if (ended)
             {
                 ended = false;
-                FindObjectOfType<Camera>().transform.position -= new Vector3(5000, 0, 0);
+                //FindObjectOfType<Camera>().transform.position -= new Vector3(5000, 0, 0);
                 startTime = Time.realtimeSinceStartup;
                 reussite.SetActive(false);
                 echec.SetActive(false);
@@ -49,8 +49,8 @@ public class EndCollider : MonoBehaviour {
     {
         if (!ended)
         {
-            FindObjectOfType<Camera>().transform.position += new Vector3(5000, 0, 0);
-            FindObjectOfType<TextMesh>().text = Mathf.Round(Time.realtimeSinceStartup - startTime).ToString();
+            //FindObjectOfType<Camera>().transform.position += new Vector3(5000, 0, 0);
+            FindObjectOfType<TextMesh>().text = Mathf.Round(Time.realtimeSinceStartup - startTime).ToString() + "s";
             //print(Time.realtimeSinceStartup);
             ended = true;
             
