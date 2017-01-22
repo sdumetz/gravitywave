@@ -51,6 +51,8 @@ public class EndCollider : MonoBehaviour {
                 startTime = Time.realtimeSinceStartup;
                 reussite.SetActive(false);
                 echec.SetActive(false);
+                sphere.gameObject.SetActive(true);
+                sphere.position = initPos;
             }
         }
 #endif

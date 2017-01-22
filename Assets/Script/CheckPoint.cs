@@ -16,8 +16,9 @@ public class CheckPoint : MonoBehaviour {
 		
 	}
 
-    void onTriggerEnter(Collision c)
+    void OnTriggerEnter(Collider other)
     {
+        //Debug.Log("test");
         done = true;
     }
 }

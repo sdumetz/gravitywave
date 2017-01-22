@@ -9,6 +9,7 @@ public class PlatformChooser : MonoBehaviour {
 #if !UNITY_ANDROID
         GetComponent<GvrHead>().enabled = false;
         GetComponent<GvrViewer>().enabled = false;
+        GetComponent<StereoController>().enabled = false;
 #endif
 #if !UNITY_STANDALONE
         GetComponent<EyeRotator>().enabled = false;
