@@ -11,6 +11,6 @@ public class BLackHole : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //transform.Rotate(target.transform.forward,6);
+        transform.Rotate(target.transform.forward,6);
 	}
 }
