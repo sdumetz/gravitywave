@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EndCollider : MonoBehaviour {
 
     private bool ended = false;
     public Transform sphere;
     public Transform cam;
-    public TextMesh textM;
+    public Text textM;
     public GameObject reussite;
     public GameObject echec;
 
@@ -21,8 +22,10 @@ public class EndCollider : MonoBehaviour {
         startTime = Time.realtimeSinceStartup;
         if (sphere)
             initPos = sphere.position;
-		
-	}
+        reussite.SetActive(false);
+        echec.SetActive(false);
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -69,7 +72,11 @@ public class EndCollider : MonoBehaviour {
             if (FindObjectOfType<CheckPoint>().done)
                 reussite.SetActive(true);
             else
+            {
+                Debug.Log("loose display");
                 echec.SetActive(true);
+            }
+                
 
             //FindObjectOfType<Camera>().transform.position += new Vector3(5000, 0, 0);
             textM.text = Mathf.Round(Time.realtimeSinceStartup - startTime).ToString() + "s";

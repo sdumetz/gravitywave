@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class showControls : MonoBehaviour {
 
@@ -14,10 +15,10 @@ public class showControls : MonoBehaviour {
     void Start () {
         level.SetActive(false);
 #if UNITY_STANDALONE
-        GetComponent<Renderer>().material = materialStandalone;
+        this.GetComponent<Image>().material = materialStandalone;
 #endif
 #if UNITY_ANDROID
-        GetComponent<Renderer>().material = materialAndroid;
+        image.material = materialAndroid;
 #endif
     }
 
