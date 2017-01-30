@@ -10,6 +10,10 @@ Aline Triqueneaux
 Thibault Guillaumont
 Nicolas Bremard
 
+## Build
+
+Enable VR by ticking "Vr mode" in the main camera scripts in Unity Editor.
+
 ## License
 
 All content is licensed under [CC BY](https://creativecommons.org/licenses/by/4.0/legalcode)

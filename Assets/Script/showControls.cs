@@ -18,7 +18,7 @@ public class showControls : MonoBehaviour {
         this.GetComponent<Image>().material = materialStandalone;
 #endif
 #if UNITY_ANDROID
-        image.material = materialAndroid;
+        this.GetComponent<Image>().material = materialAndroid;
 #endif
     }
 
